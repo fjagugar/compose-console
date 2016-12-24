@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 
-#require  File.join(File.dirname(__FILE__), '..', 'lib/core.rb')
 require_relative '../lib/compose-console.rb'
 
 cli = ComposeConsole.interface

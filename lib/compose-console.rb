@@ -8,7 +8,7 @@ class ComposeConsole
 This is a command line tool that allows you to easily manage your containers defined on your
 docker-compose file.
 
-This is meant for sugin docker-compose in your development environment.
+This is meant for managing docker-compose in your development environment.
 EOS
       version '0.0.1'
       arguments :disable
