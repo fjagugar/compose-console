@@ -1,0 +1,12 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    cliqr (2.2.0)
+      sawaal (~> 1.0.0)
+    sawaal (1.0.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  cliqr
