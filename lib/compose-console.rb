@@ -24,7 +24,7 @@ EOS
 
         handler do
           dettach_option = attach.value ? '' : '-d'
-          run "docker-compose up #{ dettach_option } #{arguments.join(' ')}"
+          ComposeConsole.run "docker-compose up #{ dettach_option } #{arguments.join(' ')}"
         end
       end
 
@@ -45,7 +45,7 @@ EOS
       action :rm do
         description 'removes the specified service'
         handler do
-          run "docker-compose rm #{arguments.join(' ')}"
+          ComposeConsole.run "docker-compose rm #{arguments.join(' ')}"
         end
       end
 
@@ -66,7 +66,7 @@ EOS
         end
 
         handler do
-          run "docker-compose logs -f #{arguments.join(' ')}"
+          ComposeConsole.run "docker-compose logs -f #{arguments.join(' ')}"
         end
       end
 
@@ -88,7 +88,7 @@ EOS
 
   private
 
-  def run(command)
+  def self.run(command)
     begin
       system command
     rescue SystemExit, Interrupt
