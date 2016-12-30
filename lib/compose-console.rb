@@ -35,6 +35,13 @@ EOS
         end
       end
 
+      action :restart do
+        description 'restarts the specified service'
+        handler do
+          `docker-compose restart #{arguments.join(' ')}`
+        end
+      end
+
       action :stop do
         description 'stops the specified service'
         handler do
@@ -62,11 +69,11 @@ EOS
         option :lines do
           short 'l'
           description 'Number of lines to show from the logs'
-          type :boolean
+          type :numeric
         end
 
         handler do
-          ComposeConsole.run "docker-compose logs -f #{arguments.join(' ')}"
+          ComposeConsole.run "docker-compose logs -f #{"--tail #{lines}" unless lines.value == 0 } #{arguments.join(' ')}"
         end
       end
 
