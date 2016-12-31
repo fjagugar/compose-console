@@ -77,6 +77,27 @@ EOS
         end
       end
 
+      action :exec do
+        description 'execute command in container'
+
+        option :service do
+          short 's'
+          description 'Service where the command will be executed. First service by default'
+          type :any
+        end
+
+        handler do
+          service_name = service.value
+          if service_name.nil?
+            first_container = `docker-compose ps`.split("\n")[2]
+            service = /\w+_(\w+)_\d/.match(first_container)[1]
+          else
+            service = service_name
+          end
+          ComposeConsole.run("docker-compose exec #{service} #{arguments.join(' ')}")
+        end
+      end
+
       action :ps do
         description 'shows current state of the containers'
         handler do
