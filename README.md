@@ -1,4 +1,6 @@
-# Project development WIP
+# compose-console
+
+WIP
 
 "compose-console" is a wrapper CLI on top of docker-compose for simplifing the syntax of the most common
 docker-compose commands used during projects development using docker environment. It's use is meant
