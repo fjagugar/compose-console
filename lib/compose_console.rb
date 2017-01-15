@@ -24,7 +24,7 @@ EOS
 
         handler do
           dettach_option = attach.value ? '' : '-d'
-          ComposeConsole.run "docker-compose up #{ dettach_option } #{arguments.join(' ')}"
+          ComposeConsole.run "docker-compose up #{dettach_option} #{arguments.join(' ')}"
         end
       end
 
@@ -73,7 +73,8 @@ EOS
         end
 
         handler do
-          ComposeConsole.run "docker-compose logs -f #{"--tail #{lines}" unless lines.value == 0 } #{arguments.join(' ')}"
+          ComposeConsole.run 'docker-compose logs -f ' \
+                             "#{"--tail #{lines}" unless lines.value.zero?} #{arguments.join(' ')}"
         end
       end
 
@@ -125,14 +126,10 @@ EOS
     end
   end
 
-  private
-
   def self.run(command)
-    begin
-      system command
-    rescue SystemExit, Interrupt
-      puts 'exit'
-    end
+    system command
+  rescue SystemExit, Interrupt
+    puts 'exit'
   end
 
   def self.retrieve_first_service

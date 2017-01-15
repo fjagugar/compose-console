@@ -10,6 +10,7 @@ for development environments.
 
  - Make sure you have ruby installed in your system
  - Clone the repository
+ - Run `bundle install --without development` for installing the required dependencies
  - Add `bin/compose-console` to your PATH
  - You are ready to go!!
 
