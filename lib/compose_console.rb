@@ -74,7 +74,8 @@ EOS
 
         handler do
           ComposeConsole.run 'docker-compose logs -f ' \
-                             "#{"--tail #{lines}" unless lines.value.zero?} #{arguments.join(' ')}"
+                             "#{lines.value.zero? ? '--tail=50' : "--tail=#{lines}"} "\
+                             "#{arguments.join(' ')}"
         end
       end
 
